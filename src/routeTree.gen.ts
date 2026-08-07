@@ -14,7 +14,18 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as AuthenticatedBoardsRouteImport } from './routes/_authenticated/boards'
+import { Route as AuthenticatedDiscoverRouteImport } from './routes/_authenticated/discover'
 import { Route as AuthenticatedHomeRouteImport } from './routes/_authenticated/home'
+import { Route as AuthenticatedOnboardingRouteImport } from './routes/_authenticated/onboarding'
+import { Route as AuthenticatedPlusRouteImport } from './routes/_authenticated/plus'
+import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
+import { Route as AuthenticatedScanRouteImport } from './routes/_authenticated/scan'
+import { Route as AuthenticatedShopRouteImport } from './routes/_authenticated/shop'
+import { Route as AuthenticatedStylistRouteImport } from './routes/_authenticated/stylist'
+import { Route as AuthenticatedWardrobeRouteImport } from './routes/_authenticated/wardrobe'
+import { Route as AuthenticatedOutfitOutfitIdRouteImport } from './routes/_authenticated/outfit.$outfitId'
+import { Route as AuthenticatedWardrobeItemIdRouteImport } from './routes/_authenticated/wardrobe.$itemId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -40,25 +51,104 @@ const ResetPasswordRoute = ResetPasswordRouteImport.update({
   path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedBoardsRoute = AuthenticatedBoardsRouteImport.update({
+  id: '/boards',
+  path: '/boards',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedDiscoverRoute = AuthenticatedDiscoverRouteImport.update({
+  id: '/discover',
+  path: '/discover',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedHomeRoute = AuthenticatedHomeRouteImport.update({
   id: '/home',
   path: '/home',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedOnboardingRoute = AuthenticatedOnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedPlusRoute = AuthenticatedPlusRouteImport.update({
+  id: '/plus',
+  path: '/plus',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedScanRoute = AuthenticatedScanRouteImport.update({
+  id: '/scan',
+  path: '/scan',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedShopRoute = AuthenticatedShopRouteImport.update({
+  id: '/shop',
+  path: '/shop',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedStylistRoute = AuthenticatedStylistRouteImport.update({
+  id: '/stylist',
+  path: '/stylist',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedWardrobeRoute = AuthenticatedWardrobeRouteImport.update({
+  id: '/wardrobe',
+  path: '/wardrobe',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedOutfitOutfitIdRoute =
+  AuthenticatedOutfitOutfitIdRouteImport.update({
+    id: '/outfit/$outfitId',
+    path: '/outfit/$outfitId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedWardrobeItemIdRoute =
+  AuthenticatedWardrobeItemIdRouteImport.update({
+    id: '/$itemId',
+    path: '/$itemId',
+    getParentRoute: () => AuthenticatedWardrobeRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/boards': typeof AuthenticatedBoardsRoute
+  '/discover': typeof AuthenticatedDiscoverRoute
   '/home': typeof AuthenticatedHomeRoute
+  '/onboarding': typeof AuthenticatedOnboardingRoute
+  '/plus': typeof AuthenticatedPlusRoute
+  '/profile': typeof AuthenticatedProfileRoute
+  '/scan': typeof AuthenticatedScanRoute
+  '/shop': typeof AuthenticatedShopRoute
+  '/stylist': typeof AuthenticatedStylistRoute
+  '/wardrobe': typeof AuthenticatedWardrobeRouteWithChildren
+  '/outfit/$outfitId': typeof AuthenticatedOutfitOutfitIdRoute
+  '/wardrobe/$itemId': typeof AuthenticatedWardrobeItemIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/boards': typeof AuthenticatedBoardsRoute
+  '/discover': typeof AuthenticatedDiscoverRoute
   '/home': typeof AuthenticatedHomeRoute
+  '/onboarding': typeof AuthenticatedOnboardingRoute
+  '/plus': typeof AuthenticatedPlusRoute
+  '/profile': typeof AuthenticatedProfileRoute
+  '/scan': typeof AuthenticatedScanRoute
+  '/shop': typeof AuthenticatedShopRoute
+  '/stylist': typeof AuthenticatedStylistRoute
+  '/wardrobe': typeof AuthenticatedWardrobeRouteWithChildren
+  '/outfit/$outfitId': typeof AuthenticatedOutfitOutfitIdRoute
+  '/wardrobe/$itemId': typeof AuthenticatedWardrobeItemIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -67,13 +157,56 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/_authenticated/boards': typeof AuthenticatedBoardsRoute
+  '/_authenticated/discover': typeof AuthenticatedDiscoverRoute
   '/_authenticated/home': typeof AuthenticatedHomeRoute
+  '/_authenticated/onboarding': typeof AuthenticatedOnboardingRoute
+  '/_authenticated/plus': typeof AuthenticatedPlusRoute
+  '/_authenticated/profile': typeof AuthenticatedProfileRoute
+  '/_authenticated/scan': typeof AuthenticatedScanRoute
+  '/_authenticated/shop': typeof AuthenticatedShopRoute
+  '/_authenticated/stylist': typeof AuthenticatedStylistRoute
+  '/_authenticated/wardrobe': typeof AuthenticatedWardrobeRouteWithChildren
+  '/_authenticated/outfit/$outfitId': typeof AuthenticatedOutfitOutfitIdRoute
+  '/_authenticated/wardrobe/$itemId': typeof AuthenticatedWardrobeItemIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/forgot-password' | '/reset-password' | '/home'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/forgot-password'
+    | '/reset-password'
+    | '/boards'
+    | '/discover'
+    | '/home'
+    | '/onboarding'
+    | '/plus'
+    | '/profile'
+    | '/scan'
+    | '/shop'
+    | '/stylist'
+    | '/wardrobe'
+    | '/outfit/$outfitId'
+    | '/wardrobe/$itemId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/forgot-password' | '/reset-password' | '/home'
+  to:
+    | '/'
+    | '/auth'
+    | '/forgot-password'
+    | '/reset-password'
+    | '/boards'
+    | '/discover'
+    | '/home'
+    | '/onboarding'
+    | '/plus'
+    | '/profile'
+    | '/scan'
+    | '/shop'
+    | '/stylist'
+    | '/wardrobe'
+    | '/outfit/$outfitId'
+    | '/wardrobe/$itemId'
   id:
     | '__root__'
     | '/'
@@ -81,7 +214,18 @@ export interface FileRouteTypes {
     | '/auth'
     | '/forgot-password'
     | '/reset-password'
+    | '/_authenticated/boards'
+    | '/_authenticated/discover'
     | '/_authenticated/home'
+    | '/_authenticated/onboarding'
+    | '/_authenticated/plus'
+    | '/_authenticated/profile'
+    | '/_authenticated/scan'
+    | '/_authenticated/shop'
+    | '/_authenticated/stylist'
+    | '/_authenticated/wardrobe'
+    | '/_authenticated/outfit/$outfitId'
+    | '/_authenticated/wardrobe/$itemId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -129,6 +273,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/boards': {
+      id: '/_authenticated/boards'
+      path: '/boards'
+      fullPath: '/boards'
+      preLoaderRoute: typeof AuthenticatedBoardsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/discover': {
+      id: '/_authenticated/discover'
+      path: '/discover'
+      fullPath: '/discover'
+      preLoaderRoute: typeof AuthenticatedDiscoverRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/home': {
       id: '/_authenticated/home'
       path: '/home'
@@ -136,15 +294,111 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedHomeRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/onboarding': {
+      id: '/_authenticated/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof AuthenticatedOnboardingRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/plus': {
+      id: '/_authenticated/plus'
+      path: '/plus'
+      fullPath: '/plus'
+      preLoaderRoute: typeof AuthenticatedPlusRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/profile': {
+      id: '/_authenticated/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AuthenticatedProfileRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/scan': {
+      id: '/_authenticated/scan'
+      path: '/scan'
+      fullPath: '/scan'
+      preLoaderRoute: typeof AuthenticatedScanRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/shop': {
+      id: '/_authenticated/shop'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof AuthenticatedShopRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/stylist': {
+      id: '/_authenticated/stylist'
+      path: '/stylist'
+      fullPath: '/stylist'
+      preLoaderRoute: typeof AuthenticatedStylistRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/wardrobe': {
+      id: '/_authenticated/wardrobe'
+      path: '/wardrobe'
+      fullPath: '/wardrobe'
+      preLoaderRoute: typeof AuthenticatedWardrobeRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/outfit/$outfitId': {
+      id: '/_authenticated/outfit/$outfitId'
+      path: '/outfit/$outfitId'
+      fullPath: '/outfit/$outfitId'
+      preLoaderRoute: typeof AuthenticatedOutfitOutfitIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/wardrobe/$itemId': {
+      id: '/_authenticated/wardrobe/$itemId'
+      path: '/$itemId'
+      fullPath: '/wardrobe/$itemId'
+      preLoaderRoute: typeof AuthenticatedWardrobeItemIdRouteImport
+      parentRoute: typeof AuthenticatedWardrobeRoute
+    }
   }
 }
 
+interface AuthenticatedWardrobeRouteChildren {
+  AuthenticatedWardrobeItemIdRoute: typeof AuthenticatedWardrobeItemIdRoute
+}
+
+const AuthenticatedWardrobeRouteChildren: AuthenticatedWardrobeRouteChildren = {
+  AuthenticatedWardrobeItemIdRoute: AuthenticatedWardrobeItemIdRoute,
+}
+
+const AuthenticatedWardrobeRouteWithChildren =
+  AuthenticatedWardrobeRoute._addFileChildren(
+    AuthenticatedWardrobeRouteChildren,
+  )
+
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedBoardsRoute: typeof AuthenticatedBoardsRoute
+  AuthenticatedDiscoverRoute: typeof AuthenticatedDiscoverRoute
   AuthenticatedHomeRoute: typeof AuthenticatedHomeRoute
+  AuthenticatedOnboardingRoute: typeof AuthenticatedOnboardingRoute
+  AuthenticatedPlusRoute: typeof AuthenticatedPlusRoute
+  AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
+  AuthenticatedScanRoute: typeof AuthenticatedScanRoute
+  AuthenticatedShopRoute: typeof AuthenticatedShopRoute
+  AuthenticatedStylistRoute: typeof AuthenticatedStylistRoute
+  AuthenticatedWardrobeRoute: typeof AuthenticatedWardrobeRouteWithChildren
+  AuthenticatedOutfitOutfitIdRoute: typeof AuthenticatedOutfitOutfitIdRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedBoardsRoute: AuthenticatedBoardsRoute,
+  AuthenticatedDiscoverRoute: AuthenticatedDiscoverRoute,
   AuthenticatedHomeRoute: AuthenticatedHomeRoute,
+  AuthenticatedOnboardingRoute: AuthenticatedOnboardingRoute,
+  AuthenticatedPlusRoute: AuthenticatedPlusRoute,
+  AuthenticatedProfileRoute: AuthenticatedProfileRoute,
+  AuthenticatedScanRoute: AuthenticatedScanRoute,
+  AuthenticatedShopRoute: AuthenticatedShopRoute,
+  AuthenticatedStylistRoute: AuthenticatedStylistRoute,
+  AuthenticatedWardrobeRoute: AuthenticatedWardrobeRouteWithChildren,
+  AuthenticatedOutfitOutfitIdRoute: AuthenticatedOutfitOutfitIdRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
