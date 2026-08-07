@@ -1,0 +1,24 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { PageHeader } from "@/components/app-shell";
+import { EmptyState } from "@/components/states";
+
+export const Route = createFileRoute("/_authenticated/onboarding")({
+  head: () => ({
+    meta: [
+      { title: "Onboarding — Outfit Oasis" },
+      { name: "description", content: "Onboarding in Outfit Oasis." },
+      { property: "og:title", content: "Onboarding — Outfit Oasis" },
+      { property: "og:description", content: "Onboarding in Outfit Oasis." },
+    ],
+  }),
+  component: Page,
+});
+
+function Page() {
+  return (
+    <>
+      <PageHeader title="Onboarding" subtitle="This section is being built next." />
+      <EmptyState title="Coming right up" description="We're finishing this screen." />
+    </>
+  );
+}
