@@ -3,7 +3,7 @@ import { Sparkles } from "lucide-react";
 import { PageHeader } from "@/components/app-shell";
 import { EmptyState, LoadingGrid } from "@/components/states";
 import { OutfitCard } from "@/components/outfit-card";
-import { useOutfits, useProfile } from "@/lib/data";
+import { useMyOutfits, useProfile } from "@/lib/data";
 import { firstName, greeting } from "@/lib/format";
 
 export const Route = createFileRoute("/_authenticated/home")({
