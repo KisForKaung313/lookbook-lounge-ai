@@ -23,7 +23,7 @@ export const Route = createFileRoute("/_authenticated/home")({
 
 function HomePage() {
   const { data: profile } = useProfile();
-  const { data: outfits, isLoading } = useOutfits();
+  const { data: outfits, isLoading } = useMyOutfits();
 
   return (
     <>
