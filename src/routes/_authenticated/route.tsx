@@ -1,14 +1,9 @@
-import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
-import { supabase } from "@/integrations/supabase/client";
+import { createFileRoute, Outlet } from "@tanstack/react-router";
 import { AppShell } from "@/components/app-shell";
 
+// Browsing is open to everyone; sign-in is only needed to save personal data.
 export const Route = createFileRoute("/_authenticated")({
   ssr: false,
-  beforeLoad: async () => {
-    const { data, error } = await supabase.auth.getUser();
-    if (error || !data.user) throw redirect({ to: "/auth", search: { mode: "login" } });
-    return { user: data.user };
-  },
   component: () => (
     <AppShell>
       <Outlet />

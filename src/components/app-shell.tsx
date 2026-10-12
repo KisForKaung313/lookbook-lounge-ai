@@ -2,6 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { Home, Compass, ScanLine, Shirt, User, Sparkles, ShoppingBag, Layers } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
+import { useSession } from "@/hooks/use-session";
 
 const PRIMARY = [
   { to: "/home", label: "Home", icon: Home },
@@ -24,6 +25,7 @@ function useIsActive() {
 
 export function AppShell({ children }: { children: ReactNode }) {
   const isActive = useIsActive();
+  const { session, loading } = useSession();
 
   return (
     <div className="min-h-screen w-full bg-background">
@@ -65,6 +67,19 @@ export function AppShell({ children }: { children: ReactNode }) {
       </aside>
 
       <div className="lg:pl-60">
+        {!loading && !session ? (
+          <div className="flex items-center justify-between gap-3 border-b border-border bg-secondary px-4 py-2.5 text-xs text-secondary-foreground sm:px-6">
+            <span>You're browsing as a guest. Sign in to save outfits and build your wardrobe.</span>
+            <span className="flex shrink-0 gap-3">
+              <Link to="/auth" search={{ mode: "login" }} className="underline underline-offset-4">
+                Sign in
+              </Link>
+              <Link to="/auth" search={{ mode: "signup" }} className="font-medium underline underline-offset-4">
+                Create account
+              </Link>
+            </span>
+          </div>
+        ) : null}
         <main className="mx-auto w-full max-w-5xl px-4 pb-28 pt-5 sm:px-6 lg:pb-14 lg:pt-10">
           {children}
         </main>
