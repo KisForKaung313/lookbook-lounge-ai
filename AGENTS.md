@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Public company pages use the shared WebsiteShell and CompanyHome presentation modules, while existing personal tools retain AppShell; this separates the company introduction from the application experience without changing personal-data behavior.
+- Company copy distinguishes product vision from live features; this avoids promising capabilities that are still in development.
