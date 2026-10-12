@@ -9,6 +9,8 @@ import { Label } from "@/components/ui/label";
 export const Route = createFileRoute("/forgot-password")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Reset your password — Outfit Oasis" },
       { name: "description", content: "Send yourself a link to set a new Outfit Oasis password." },
       { property: "og:title", content: "Reset your password — Outfit Oasis" },

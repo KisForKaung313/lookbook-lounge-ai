@@ -5,6 +5,8 @@ import { EmptyState } from "@/components/states";
 export const Route = createFileRoute("/_authenticated/stylist")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Stylist — Outfit Oasis" },
       { name: "description", content: "Stylist in Outfit Oasis." },
       { property: "og:title", content: "Stylist — Outfit Oasis" },
