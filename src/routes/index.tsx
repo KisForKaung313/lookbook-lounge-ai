@@ -1,7 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, redirect } from "@tanstack/react-router";
 import heroImage from "@/assets/hero.jpg";
 
 export const Route = createFileRoute("/")({
+  beforeLoad: () => {
+    throw redirect({ to: "/home" });
+  },
   head: () => ({
     meta: [
       { title: "Outfit Oasis — Your personal AI stylist" },
