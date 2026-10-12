@@ -1,0 +1,37 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import campaign from "@/assets/company-campaign.jpg";
+import community from "@/assets/company-community.jpg";
+
+export const Route = createFileRoute("/_authenticated/about")({
+  head: () => ({ meta: [
+    { title: "About Outfit Oasis — Our story, mission and vision" },
+    { name: "description", content: "Learn why Outfit Oasis is building a more accessible approach to personal fashion: confidence beyond labels, creativity through technology, and style for everyone." },
+    { property: "og:title", content: "About Outfit Oasis — Our story, mission and vision" },
+    { property: "og:description", content: "Our purpose is to help people style smarter, shop easier, and feel confident in their own expression." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+  ] }),
+  component: AboutPage,
+});
+
+function AboutPage() {
+  return <>
+    <section className="relative isolate overflow-hidden">
+      <img src={campaign} alt="Personal style and confident expression — Outfit Oasis editorial" width={1536} height={1024} fetchPriority="high" className="absolute inset-0 -z-20 size-full object-cover object-[70%_center]" />
+      <div className="campaign-scrim absolute inset-0 -z-10" />
+      <div className="mx-auto max-w-7xl px-5 py-20 sm:px-10 sm:py-28"><p className="eyebrow mb-5 text-foreground">About Outfit Oasis</p><h1 className="max-w-lg text-5xl leading-tight sm:text-6xl">Outfit Oasis.<br /><em>Confidence by design.</em></h1><p className="mt-6 max-w-sm text-sm leading-7">We’re here to change how people feel about getting dressed. Not by telling you who to be, but by helping you express who you already are.</p></div>
+    </section>
+    <section className="mx-auto grid max-w-7xl gap-8 px-5 py-20 sm:px-10 md:grid-cols-[1fr_2fr]"><p className="eyebrow pt-2">01 / Why we exist</p><div><h2 className="text-4xl leading-tight sm:text-5xl">Great style isn’t a label.<br /><em>It’s a feeling.</em></h2><div className="mt-7 space-y-5 text-base leading-8 text-muted-foreground"><p>The best thing anyone can wear isn’t an expensive brand, a designer outfit, or a piece of jewelry. It’s confidence. Yet fashion can sometimes leave us feeling the opposite: uncertain about what suits us, unsure what to wear, or disappointed when a piece we loved doesn’t feel right on us.</p><p>Outfit Oasis grows from that everyday experience. We believe dressing well is less about looking like a model in an advertisement and more about feeling uniquely, creatively, and comfortably yourself, in a way that fits the moment.</p><p>We’re bringing together personal expression and technology to turn outfit coordination from a source of stress into something enjoyable, inspiring, and effortless. A place to discover possibilities, not another set of rules to follow.</p></div></div></section>
+    <section className="bg-primary text-primary-foreground"><div className="mx-auto max-w-7xl px-5 py-20 sm:px-10"><p className="mb-6 text-xs uppercase opacity-70">Our guiding belief</p><blockquote className="max-w-4xl font-display text-4xl leading-tight sm:text-5xl">“The best thing someone can wear<br className="hidden md:block" /> is <em>confidence.</em>”</blockquote><p className="mt-6 text-sm opacity-75">The idea at the heart of Outfit Oasis.</p></div></section>
+    <section className="mx-auto grid max-w-7xl gap-12 px-5 py-20 sm:px-10 md:grid-cols-2 md:gap-20"><div><p className="eyebrow mb-5">02 / Our mission</p><h2 className="text-4xl">Style smarter.<br /><em>Shop easier.</em></h2><p className="mt-6 text-sm leading-7 text-muted-foreground">Our mission is to help people style smarter and shop easier through AI-driven recommendations tailored to individual tastes, occasions, and lifestyles. We want to make a personal fashion stylist accessible in your pocket, whenever inspiration is needed.</p><p className="mt-4 text-sm leading-7 text-muted-foreground">We aim to bridge the gap between inspiration and purchase, bringing the creativity of visual discovery together with the convenience of shopping. Local and global fashion brands are part of that vision, with personal style at the center.</p></div><div><p className="eyebrow mb-5">03 / Our vision</p><h2 className="text-4xl">A more personal<br /><em>future for fashion.</em></h2><p className="mt-6 text-sm leading-7 text-muted-foreground">We aspire to become a trusted digital fashion stylist and marketplace, blending artificial intelligence, creativity, and convenience. A world where you can dress for the right moment without second-guessing yourself, and find fresh possibilities in the pieces you already own.</p><p className="mt-4 text-sm leading-7 text-muted-foreground">Ultimately, we want Outfit Oasis to be more than an app: a destination where people find confidence, creativity, and convenience in fashion every day.</p></div></section>
+    <section className="border-y border-border bg-muted"><div className="mx-auto max-w-7xl px-5 py-20 sm:px-10"><p className="eyebrow mb-5">04 / What matters to us</p><h2 className="text-4xl sm:text-5xl">Different styles. <em>Shared values.</em></h2><div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">{[
+      { number: "01", title: "Confidence", text: "Feeling good in what you wear matters more than a price tag. Style should support self-belief, not comparison." },
+      { number: "02", title: "Creativity", text: "Your personality belongs in your wardrobe. We celebrate experimenting, combining, and making a look your own." },
+      { number: "03", title: "Accessibility", text: "Personal style is for everyone, regardless of background, budget, or fashion experience." },
+      { number: "04", title: "Convenience", text: "Technology should make fashion feel simpler, connecting inspiration and everyday decisions with less friction." },
+    ].map(({ number, title, text }) => <div key={number} className="border-t border-border pt-5"><span className="text-xs text-muted-foreground">{number}</span><h3 className="mt-6 text-3xl">{title}</h3><p className="mt-4 text-sm leading-7 text-muted-foreground">{text}</p></div>)}</div></div></section>
+    <section className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 sm:px-10 md:grid-cols-2"><img src={community} alt="Fashion for different personalities — friends in their own individual styles" loading="lazy" width={1536} height={1024} className="aspect-[5/4] w-full object-cover" /><div><p className="eyebrow mb-5">05 / Where we’re going</p><h2 className="text-4xl leading-tight sm:text-5xl">Inspiration today.<br /><em>Possibility tomorrow.</em></h2><p className="mt-6 text-sm leading-7 text-muted-foreground">Our roadmap explores personalized styling, outfit scanning, community styling boards, and a connected fashion marketplace. Longer-term ideas include augmented-reality try-ons, bringing new ways to imagine a look before wearing it.</p><p className="mt-4 text-sm leading-7 text-muted-foreground">These are ambitions we’re building toward, not promises that every feature is available today. Outfit Oasis is an evolving platform, and we’re taking it forward with the same purpose: helping people look and feel their best.</p><Button asChild variant="link" className="mt-6 px-0"><Link to="/home">Back to our world <ArrowUpRight /></Link></Button></div></section>
+  </>;
+}

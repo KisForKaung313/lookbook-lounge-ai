@@ -3,6 +3,7 @@ import { Home, Compass, ScanLine, Shirt, User, Sparkles, ShoppingBag, Layers } f
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 import { useSession } from "@/hooks/use-session";
+import { WebsiteShell } from "@/components/website-shell";
 
 const PRIMARY = [
   { to: "/home", label: "Home", icon: Home },
@@ -26,6 +27,9 @@ function useIsActive() {
 export function AppShell({ children }: { children: ReactNode }) {
   const isActive = useIsActive();
   const { session, loading } = useSession();
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+
+  if (pathname === "/home" || pathname === "/about") return <WebsiteShell>{children}</WebsiteShell>;
 
   return (
     <div className="min-h-screen w-full bg-background">
@@ -36,6 +40,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           <span className="eyebrow mt-2 block text-[0.6rem]">Level up your fashion game</span>
         </Link>
         <nav className="flex flex-col gap-1">
+          <Link to="/about" className="px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground">About us</Link>
           {[...PRIMARY, ...DESKTOP_EXTRA].map(({ to, label, icon: Icon }) => (
             <Link
               key={to}
