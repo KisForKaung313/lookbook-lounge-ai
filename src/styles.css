@@ -189,3 +189,52 @@
   .rise { animation: none; }
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0s !important; }
 }
+
+/* Company motion: restrained editorial movement, isolated from personal tools. */
+.company-website { --motion-duration: 800ms; }
+.company-website section { scroll-margin-top: 100px; }
+.reading-progress { transform: scaleX(0); }
+.company-website main > section:first-child > img {
+  animation: campaign-arrive 1.8s cubic-bezier(0.2, 0.65, 0.3, 1) both,
+    campaign-drift 22s 1.8s ease-in-out infinite alternate;
+  transform-origin: 65% 30%;
+}
+.company-website main > section:first-child > div:not(.campaign-scrim) > * {
+  animation: editorial-arrive 900ms cubic-bezier(0.2, 0.65, 0.3, 1) both;
+}
+.company-website main > section:first-child > div:not(.campaign-scrim) > :nth-child(2) { animation-delay: 100ms; }
+.company-website main > section:first-child > div:not(.campaign-scrim) > :nth-child(3) { animation-delay: 200ms; }
+.company-website main > section:first-child > div:not(.campaign-scrim) > :nth-child(4) { animation-delay: 300ms; }
+.company-website main > section:first-child > div:not(.campaign-scrim) > :nth-child(5) { animation-delay: 400ms; }
+.company-website .motion-pending {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--motion-duration) ease, transform var(--motion-duration) cubic-bezier(0.2, 0.65, 0.3, 1);
+}
+.company-website .motion-visible { opacity: 1; transform: none; }
+.company-website article.motion-pending:nth-child(2) { transition-delay: 100ms; }
+.company-website article.motion-pending:nth-child(3) { transition-delay: 200ms; }
+.company-website article img { transition: transform 900ms cubic-bezier(0.2, 0.65, 0.3, 1); }
+.company-website article:hover img { transform: scale(1.045); }
+.company-website a svg { transition: transform 250ms ease; }
+.company-website a:hover svg { transform: translate(2px, -2px); }
+.company-website a[href="#our-belief"] svg { animation: scroll-nudge 2.8s ease-in-out infinite; }
+.company-menu { animation: editorial-arrive 250ms ease both; }
+.brand-ribbon { padding-block: 22px; }
+.brand-ribbon-track { display: flex; width: max-content; animation: ribbon-travel 42s linear infinite; }
+.brand-ribbon-group { display: flex; flex-shrink: 0; align-items: center; gap: 40px; padding-right: 40px; }
+.brand-ribbon-track[data-paused="true"], .brand-ribbon:hover .brand-ribbon-track, .brand-ribbon:focus-within .brand-ribbon-track { animation-play-state: paused; }
+.ribbon-control:hover { background: var(--primary); color: var(--primary-foreground); }
+@keyframes editorial-arrive { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes campaign-arrive { from { opacity: 0; transform: scale(1.045); } to { opacity: 1; transform: scale(1); } }
+@keyframes campaign-drift { from { transform: scale(1); } to { transform: scale(1.035); } }
+@keyframes scroll-nudge { 0%, 70%, 100% { transform: translateY(0); } 85% { transform: translateY(5px); } }
+@keyframes ribbon-travel { to { transform: translateX(-25%); } }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+@media (prefers-reduced-motion: reduce) {
+  .company-website *, .company-website *::before, .company-website *::after { animation: none !important; transition: none !important; }
+  .company-website .motion-pending { opacity: 1; transform: none; }
+  .brand-ribbon-track { width: 100%; }
+  .brand-ribbon-group { width: 100%; flex-wrap: wrap; justify-content: center; gap: 16px 28px; padding: 0 24px; }
+  .brand-ribbon-group:not(:first-child), .ribbon-control { display: none; }
+}
