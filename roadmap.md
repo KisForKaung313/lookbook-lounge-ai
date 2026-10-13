@@ -5,6 +5,6 @@
 - [x] Verify public browsing, navigation, page metadata, and imagery.
 
 # Professional motion refresh
-- [ ] Add coordinated entrances, subtle photo movement, and a moving brand ribbon to company pages.
-- [ ] Polish navigation and interactive motion with reduced-motion support.
-- [ ] Verify Home, About, navigation, and motion preferences in the browser.
+- [x] Add coordinated entrances, subtle photo movement, and a moving brand ribbon to company pages.
+- [x] Polish navigation and interactive motion with reduced-motion support.
+- [x] Verify Home, About, navigation, and motion preferences in the browser.
