@@ -23,7 +23,7 @@ export function WebsiteShell({ children }: { children: ReactNode }) {
             <Button asChild variant="link" className="text-muted-foreground"><Link to="/discover">Explore style</Link></Button>
           </nav>
           <div className="flex items-center gap-2">
-            <Button asChild variant="ghost" className="hidden sm:inline-flex"><Link to={session ? "/profile" : "/auth"} search={session ? undefined : { mode: "login" }}>{session ? "My account" : "Sign in"}</Link></Button>
+            <Button asChild variant="ghost" className="hidden sm:inline-flex">{session ? <Link to="/profile">My account</Link> : <Link to="/auth" search={{ mode: "login" }}>Sign in</Link>}</Button>
             <Button asChild className="hidden sm:inline-flex"><Link to="/about">Meet Outfit Oasis <ArrowUpRight /></Link></Button>
             <Button variant="ghost" size="icon" className="md:hidden" aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</Button>
           </div>
