@@ -10,7 +10,7 @@ import elegant from "@/assets/looks/elegant.jpg";
 export function CompanyHome() {
   return <>
     <section className="company-hero relative isolate overflow-hidden">
-      <img src={campaign} alt="Three people confidently expressing their personal style in contemporary tailoring" width={1536} height={1024} fetchPriority="high" className="absolute inset-0 -z-20 size-full object-cover object-[65%_center]" />
+      <img src={campaign} alt="Three people confidently expressing their personal style in contemporary tailoring" width={1536} height={1024} fetchPriority="high" className="absolute inset-0 -z-20 size-full object-cover object-[65%_top]" />
       <div className="campaign-scrim absolute inset-0 -z-10" />
       <div className="mx-auto flex min-h-[inherit] max-w-7xl flex-col justify-center px-5 py-16 sm:px-10">
         <p className="eyebrow mb-5 text-foreground">Fashion. Reimagined around you.</p>

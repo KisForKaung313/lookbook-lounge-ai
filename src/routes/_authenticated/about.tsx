@@ -19,7 +19,7 @@ export const Route = createFileRoute("/_authenticated/about")({
 function AboutPage() {
   return <>
     <section className="relative isolate overflow-hidden">
-      <img src={campaign} alt="Personal style and confident expression — Outfit Oasis editorial" width={1536} height={1024} fetchPriority="high" className="absolute inset-0 -z-20 size-full object-cover object-[70%_center]" />
+      <img src={campaign} alt="Personal style and confident expression — Outfit Oasis editorial" width={1536} height={1024} fetchPriority="high" className="absolute inset-0 -z-20 size-full object-cover object-[70%_top]" />
       <div className="campaign-scrim absolute inset-0 -z-10" />
       <div className="mx-auto max-w-7xl px-5 py-20 sm:px-10 sm:py-28"><p className="eyebrow mb-5 text-foreground">About Outfit Oasis</p><h1 className="max-w-lg text-5xl leading-tight sm:text-6xl">Outfit Oasis.<br /><em>Confidence by design.</em></h1><p className="mt-6 max-w-sm text-sm leading-7">We’re here to change how people feel about getting dressed. Not by telling you who to be, but by helping you express who you already are.</p></div>
     </section>
