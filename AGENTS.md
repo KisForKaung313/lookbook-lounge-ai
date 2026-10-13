@@ -11,3 +11,4 @@
 
 - Public company pages use the shared WebsiteShell and CompanyHome presentation modules, while existing personal tools retain AppShell; this separates the company introduction from the application experience without changing personal-data behavior.
 - Company copy distinguishes product vision from live features; this avoids promising capabilities that are still in development.
+- Company motion is scoped to WebsiteShell, uses IntersectionObserver for progressive scroll reveals and CSS for ambient motion, and respects reduced-motion preferences; this keeps public presentation effects out of personal tools and preserves readable content without JavaScript.

@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { ArrowUpRight, Menu, X } from "lucide-react";
-import { useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { useSession } from "@/hooks/use-session";
 
@@ -13,9 +13,55 @@ export function WebsiteShell({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   const { session } = useSession();
+  const mainRef = useRef<HTMLElement>(null);
+  const progressRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const main = mainRef.current;
+    if (!main) return;
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const elements = Array.from(main.querySelectorAll<HTMLElement>("section:not(:first-child) h2, section:not(:first-child) h3, section:not(:first-child) p, section:not(:first-child) article, section:not(:first-child) img, blockquote"))
+      .filter((element) => !element.closest("article") || element.tagName === "ARTICLE");
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("motion-visible");
+          observer.unobserve(entry.target);
+        }
+      }
+    }, { threshold: 0.08, rootMargin: "0px 0px -24px 0px" });
+    const initialize = () => {
+      observer.disconnect();
+      elements.forEach((element) => {
+        element.classList.remove("motion-pending", "motion-visible");
+        if (!preference.matches && element.getBoundingClientRect().top > window.innerHeight - 24) {
+          element.classList.add("motion-pending");
+          observer.observe(element);
+        }
+      });
+    };
+    const updateProgress = () => {
+      const distance = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = distance > 0 ? Math.min(1, Math.max(0, window.scrollY / distance)) : 0;
+      if (progressRef.current) progressRef.current.style.transform = `scaleX(${progress})`;
+    };
+    initialize();
+    updateProgress();
+    preference.addEventListener("change", initialize);
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress);
+    return () => {
+      observer.disconnect();
+      preference.removeEventListener("change", initialize);
+      window.removeEventListener("scroll", updateProgress);
+      window.removeEventListener("resize", updateProgress);
+      elements.forEach((element) => element.classList.remove("motion-pending", "motion-visible"));
+    };
+  }, [pathname]);
   return (
-    <div className="min-h-screen bg-background">
-      <header className="relative z-30 border-b border-border bg-background">
+    <div className="company-website min-h-screen bg-background">
+      <header className="sticky top-0 z-30 border-b border-border bg-background/95 backdrop-blur-md">
+        <div ref={progressRef} aria-hidden="true" className="reading-progress absolute inset-x-0 bottom-0 h-0.5 origin-left bg-success" />
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-5 sm:px-10">
           <Link to="/home" className="font-display text-3xl" onClick={() => setOpen(false)}>Outfit Oasis<span className="text-success">.</span></Link>
           <nav aria-label="Company navigation" className="hidden items-center gap-8 md:flex">
@@ -28,12 +74,12 @@ export function WebsiteShell({ children }: { children: ReactNode }) {
             <Button variant="ghost" size="icon" className="md:hidden" aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</Button>
           </div>
         </div>
-        {open && <nav aria-label="Mobile company navigation" className="absolute inset-x-0 top-20 flex flex-col gap-2 border-b border-border bg-background px-5 py-5 shadow-soft">
+        {open && <nav aria-label="Mobile company navigation" className="company-menu absolute inset-x-0 top-20 flex flex-col gap-2 border-b border-border bg-background px-5 py-5 shadow-soft">
           {[...links, { to: "/discover", label: "Explore style" } as const].map(({ to, label }) => <Button asChild variant="ghost" className="justify-start" key={to}><Link to={to} onClick={() => setOpen(false)}>{label}</Link></Button>)}
           <Button asChild variant="outline"><Link to="/auth" search={{ mode: "login" }} onClick={() => setOpen(false)}>Sign in</Link></Button>
         </nav>}
       </header>
-      <main>{children}</main>
+      <main ref={mainRef} key={pathname}>{children}</main>
       <footer className="border-t border-border">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-10 md:grid-cols-[2fr_1fr_1fr]">
           <div><Link to="/home" className="font-display text-3xl">Outfit Oasis.</Link><p className="mt-4 max-w-sm text-sm leading-7 text-muted-foreground">Confidence, creativity, and convenience. A fresh perspective on getting dressed, expressing yourself, and finding your own style.</p></div>

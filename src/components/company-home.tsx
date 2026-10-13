@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowDown, ArrowUpRight, Sparkles, Shirt, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { BrandRibbon } from "@/components/brand-ribbon";
 import campaign from "@/assets/company-campaign.jpg";
 import community from "@/assets/company-community.jpg";
 import minimal from "@/assets/looks/minimal.jpg";
@@ -21,7 +22,7 @@ export function CompanyHome() {
       </div>
       <a href="#our-belief" className="absolute bottom-5 left-5 flex items-center gap-2 text-xs sm:left-10"><ArrowDown className="size-4" /> A different way to dress</a>
     </section>
-    <div className="border-b border-border bg-primary text-primary-foreground"><div className="mx-auto flex max-w-7xl flex-wrap justify-between gap-4 px-5 py-5 text-xs sm:px-10"><span>PERSONAL STYLE, NOT PRICE TAGS</span><span>INSPIRED BY YOU</span><span>CONFIDENCE FOR EVERYONE</span></div></div>
+    <BrandRibbon />
     <section id="our-belief" className="mx-auto grid max-w-7xl gap-8 px-5 py-20 sm:px-10 md:grid-cols-[1fr_2fr] md:py-24">
       <p className="eyebrow pt-2">01 / Our belief</p>
       <div><h2 className="max-w-3xl text-4xl leading-tight sm:text-5xl">A wardrobe full of clothes.<br /><em>A world of possibilities.</em></h2><div className="mt-8 grid gap-6 text-sm leading-7 text-muted-foreground sm:grid-cols-2"><p>We’ve all been there: buying something we love, then feeling that it doesn’t quite look the way we imagined. Or standing in front of a full wardrobe with nothing to wear. Getting dressed shouldn’t make you doubt yourself.</p><p>Outfit Oasis began with a simple belief: great style isn’t about expensive brands. It’s about discovering what works for you, dressing for the moments that matter, and finding confidence in your own expression.</p></div><Button asChild variant="link" className="mt-5 px-0"><Link to="/about">More about our purpose <ArrowUpRight /></Link></Button></div>
