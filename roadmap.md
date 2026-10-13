@@ -3,3 +3,8 @@
 - [x] Add a substantial About Us page using the supplied company documents.
 - [x] Replace app-style navigation on company pages while keeping existing tools accessible.
 - [x] Verify public browsing, navigation, page metadata, and imagery.
+
+# Professional motion refresh
+- [ ] Add coordinated entrances, subtle photo movement, and a moving brand ribbon to company pages.
+- [ ] Polish navigation and interactive motion with reduced-motion support.
+- [ ] Verify Home, About, navigation, and motion preferences in the browser.
