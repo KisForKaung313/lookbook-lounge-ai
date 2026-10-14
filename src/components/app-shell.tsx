@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 import { useSession } from "@/hooks/use-session";
 import { WebsiteShell } from "@/components/website-shell";
+import logoAsset from "@/assets/outfit-oasis-logo.png.asset.json";
 
 const PRIMARY = [
   { to: "/home", label: "Home", icon: Home },
@@ -36,8 +37,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       {/* Desktop sidebar */}
       <aside className="fixed inset-y-0 left-0 z-30 hidden w-60 flex-col border-r border-border bg-sidebar px-5 py-7 lg:flex">
         <Link to="/home" className="mb-9 block">
-          <span className="font-display text-2xl leading-none">Outfit Oasis</span>
-          <span className="eyebrow mt-2 block text-[0.6rem]">Level up your fashion game</span>
+          <img src={logoAsset.url} alt="Outfit Oasis — Level up your fashion game" className="h-24 w-auto" />
         </Link>
         <nav className="flex flex-col gap-1">
           <Link to="/about" className="px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground">About us</Link>

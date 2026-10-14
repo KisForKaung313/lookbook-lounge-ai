@@ -3,6 +3,7 @@ import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { useSession } from "@/hooks/use-session";
+import logoAsset from "@/assets/outfit-oasis-logo.png.asset.json";
 
 const links = [
   { to: "/home", label: "Home" },
@@ -63,7 +64,7 @@ export function WebsiteShell({ children }: { children: ReactNode }) {
       <header className="sticky top-0 z-30 border-b border-border bg-background/95 backdrop-blur-md">
         <div ref={progressRef} aria-hidden="true" className="reading-progress absolute inset-x-0 bottom-0 h-0.5 origin-left bg-success" />
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-5 sm:px-10">
-          <Link to="/home" className="font-display text-3xl" onClick={() => setOpen(false)}>Outfit Oasis<span className="text-success">.</span></Link>
+          <Link to="/home" className="inline-flex items-center" onClick={() => setOpen(false)} aria-label="Outfit Oasis home"><img src={logoAsset.url} alt="Outfit Oasis" className="h-16 w-auto" /></Link>
           <nav aria-label="Company navigation" className="hidden items-center gap-8 md:flex">
             {links.map(({ to, label }) => <Button key={to} asChild variant="link" className={pathname === to || (to === "/home" && pathname === "/") ? "underline underline-offset-8" : "text-muted-foreground"}><Link to={to}>{label}</Link></Button>)}
             <Button asChild variant="link" className="text-muted-foreground"><Link to="/discover">Explore style</Link></Button>
@@ -82,7 +83,7 @@ export function WebsiteShell({ children }: { children: ReactNode }) {
       <main ref={mainRef} key={pathname}>{children}</main>
       <footer className="border-t border-border">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-10 md:grid-cols-[2fr_1fr_1fr]">
-          <div><Link to="/home" className="font-display text-3xl">Outfit Oasis.</Link><p className="mt-4 max-w-sm text-sm leading-7 text-muted-foreground">Confidence, creativity, and convenience. A fresh perspective on getting dressed, expressing yourself, and finding your own style.</p></div>
+          <div><Link to="/home" className="inline-block w-fit"><img src={logoAsset.url} alt="Outfit Oasis" className="h-16 w-auto" /></Link><p className="mt-4 max-w-sm text-sm leading-7 text-muted-foreground">Confidence, creativity, and convenience. A fresh perspective on getting dressed, expressing yourself, and finding your own style.</p></div>
           <div><p className="eyebrow mb-4">Our world</p><div className="flex flex-col items-start gap-3"><Link to="/home" className="text-sm hover:underline">Home</Link><Link to="/about" className="text-sm hover:underline">About us</Link><Link to="/discover" className="text-sm hover:underline">Style inspiration</Link></div></div>
           <div><p className="eyebrow mb-4">The platform</p><div className="flex flex-col items-start gap-3"><Link to="/stylist" className="text-sm hover:underline">AI stylist</Link><Link to="/wardrobe" className="text-sm hover:underline">Digital wardrobe</Link><Link to="/shop" className="text-sm hover:underline">Marketplace</Link><Link to="/auth" search={{ mode: "signup" }} className="text-sm hover:underline">Create an account</Link></div></div>
         </div>
