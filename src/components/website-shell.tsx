@@ -64,7 +64,7 @@ export function WebsiteShell({ children }: { children: ReactNode }) {
       <header className="sticky top-0 z-30 border-b border-border bg-background/95 backdrop-blur-md">
         <div ref={progressRef} aria-hidden="true" className="reading-progress absolute inset-x-0 bottom-0 h-0.5 origin-left bg-success" />
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-5 sm:px-10">
-          <Link to="/home" className="inline-flex items-center" onClick={() => setOpen(false)} aria-label="Outfit Oasis home"><img src={logoAsset.url} alt="Outfit Oasis" className="h-14 w-auto" /></Link>
+          <Link to="/home" className="inline-flex items-center" onClick={() => setOpen(false)} aria-label="Outfit Oasis home"><img src={logoAsset.url} alt="Outfit Oasis" className="h-16 w-auto" /></Link>
           <nav aria-label="Company navigation" className="hidden items-center gap-8 md:flex">
             {links.map(({ to, label }) => <Button key={to} asChild variant="link" className={pathname === to || (to === "/home" && pathname === "/") ? "underline underline-offset-8" : "text-muted-foreground"}><Link to={to}>{label}</Link></Button>)}
             <Button asChild variant="link" className="text-muted-foreground"><Link to="/discover">Explore style</Link></Button>

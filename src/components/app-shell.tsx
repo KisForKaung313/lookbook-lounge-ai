@@ -37,7 +37,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       {/* Desktop sidebar */}
       <aside className="fixed inset-y-0 left-0 z-30 hidden w-60 flex-col border-r border-border bg-sidebar px-5 py-7 lg:flex">
         <Link to="/home" className="mb-9 block">
-          <img src={logoAsset.url} alt="Outfit Oasis — Level up your fashion game" className="h-16 w-auto" />
+          <img src={logoAsset.url} alt="Outfit Oasis — Level up your fashion game" className="h-24 w-auto" />
         </Link>
         <nav className="flex flex-col gap-1">
           <Link to="/about" className="px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground">About us</Link>
